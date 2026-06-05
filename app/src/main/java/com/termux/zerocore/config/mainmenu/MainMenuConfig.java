@@ -58,7 +58,6 @@ import com.termux.zerocore.config.mainmenu.config.X11SettingsClickConfig;
 import com.termux.zerocore.config.mainmenu.config.X86AlpineDataClickConfig;
 import com.termux.zerocore.config.mainmenu.config.ZTCommandKeyClickConfig;
 import com.termux.zerocore.config.mainmenu.config.ZTSettingsClickConfig;
-import com.termux.zerocore.config.mainmenu.config.ZeroBBsClickConfig;
 import com.termux.zerocore.config.mainmenu.config.ZeroFunctionClickConfig;
 import com.termux.zerocore.config.mainmenu.data.MainMenuCategoryData;
 
@@ -130,7 +129,6 @@ public class MainMenuConfig implements BaseConfig {
         // 线上功能
         ArrayList<MainMenuClickConfig> onlineClicks = new ArrayList<>();
         onlineClicks.add(new OnLineCommandClickConfig());
-        onlineClicks.add(new ZeroBBsClickConfig());
         onlineClicks.add(new DownLoadClickConfig());
         onlineClicks.add(new PublicWarehouseClickConfig());
         MAIN_MENU_CATEGORY_DATAS.add(new MainMenuCategoryData(context.getString(R.string.online_features), CODE_ONLINE_FEATURES, onlineClicks));

@@ -150,12 +150,28 @@ android {
 
     // ZeroTermux add {@
     // 添加以下配置
+    // 通过 -Darch={arm|arm64|x86|x86_64|all|universal} 控制构建架构，默认all生成通用APK
 
-    splits.abi {
-        enable true
-        reset()
-        include "x86", "x86_64", "armeabi-v7a", "arm64-v8a"
-        universalApk true
+    def buildArch = System.getProperty("arch", "all")
+    splits {
+        abi {
+            if (buildArch == "universal") {
+                enable false
+            } else if (buildArch == "all") {
+                enable true
+                reset()
+                include "x86", "x86_64", "armeabi-v7a", "arm64-v8a"
+                universalApk true
+            } else {
+                enable true
+                reset()
+                def abi = buildArch == "arm" ? "armeabi-v7a" :
+                          buildArch == "arm64" ? "arm64-v8a" :
+                          buildArch == "x86" ? "x86" :
+                          buildArch == "x86_64" ? "x86_64" : ""
+                include abi
+            }
+        }
     }
     // 添加 Kotlin 编译选项
     kotlinOptions {
@@ -404,5 +420,10 @@ task downloadBootstraps() {
 afterEvaluate {
     android.applicationVariants.all { variant ->
         variant.javaCompileProvider.get().dependsOn(downloadBootstraps)
+    }
+    // Ensure bootstrap zips are downloaded before the NDK native build,
+    // since the NDK build task may run before Java compilation.
+    tasks.matching { it.name.startsWith("buildNdkBuild") }.configureEach {
+        it.dependsOn(downloadBootstraps)
     }
 }

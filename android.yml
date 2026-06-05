@@ -1,10 +1,10 @@
-name: 编译ZeroTermux
+name: 编译NovaShell
 
 on:
   push:
     branches: [ "main", "master" ]
     tags:
-      - "ZeroTermux-*"
+      - "NovaShell-*"
       - "v*"
       - "[0-9]*"
     paths-ignore:
@@ -75,9 +75,9 @@ jobs:
           REF_TYPE: ${{ github.ref_type }}
         run: |
           if [[ "$REF_TYPE" == "tag" ]]; then
-            APP_NAME="ZeroTermux-$REF_NAME"
+            APP_NAME="NovaShell-$REF_NAME"
           else
-            APP_NAME="ZeroTermux-Nightly"
+            APP_NAME="NovaShell-Nightly"
           fi
 
           mkdir -p dist
@@ -116,70 +116,70 @@ jobs:
       - name: 上传 Debug Universal Zip
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ format('{0}_debug_universal', github.ref_type == 'tag' && format('ZeroTermux-{0}', github.ref_name) || 'ZeroTermux-Nightly') }}
+          name: ${{ format('{0}_debug_universal', github.ref_type == 'tag' && format('NovaShell-{0}', github.ref_name) || 'NovaShell-Nightly') }}
           path: dist/*_debug_universal.zip
           if-no-files-found: ignore
 
       - name: 上传 Debug Arm64 Zip
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ format('{0}_debug_arm64-v8a', github.ref_type == 'tag' && format('ZeroTermux-{0}', github.ref_name) || 'ZeroTermux-Nightly') }}
+          name: ${{ format('{0}_debug_arm64-v8a', github.ref_type == 'tag' && format('NovaShell-{0}', github.ref_name) || 'NovaShell-Nightly') }}
           path: dist/*_debug_arm64-v8a.zip
           if-no-files-found: ignore
 
       - name: 上传 Debug Armeabi Zip
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ format('{0}_debug_armeabi-v7a', github.ref_type == 'tag' && format('ZeroTermux-{0}', github.ref_name) || 'ZeroTermux-Nightly') }}
+          name: ${{ format('{0}_debug_armeabi-v7a', github.ref_type == 'tag' && format('NovaShell-{0}', github.ref_name) || 'NovaShell-Nightly') }}
           path: dist/*_debug_armeabi-v7a.zip
           if-no-files-found: ignore
 
       - name: 上传 Debug X86 Zip
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ format('{0}_debug_x86', github.ref_type == 'tag' && format('ZeroTermux-{0}', github.ref_name) || 'ZeroTermux-Nightly') }}
+          name: ${{ format('{0}_debug_x86', github.ref_type == 'tag' && format('NovaShell-{0}', github.ref_name) || 'NovaShell-Nightly') }}
           path: dist/*_debug_x86.zip
           if-no-files-found: ignore
 
       - name: 上传 Debug X86_64 Zip
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ format('{0}_debug_x86_64', github.ref_type == 'tag' && format('ZeroTermux-{0}', github.ref_name) || 'ZeroTermux-Nightly') }}
+          name: ${{ format('{0}_debug_x86_64', github.ref_type == 'tag' && format('NovaShell-{0}', github.ref_name) || 'NovaShell-Nightly') }}
           path: dist/*_debug_x86_64.zip
           if-no-files-found: ignore
 
       - name: 上传 Release Universal Zip
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ format('{0}_release_universal', github.ref_type == 'tag' && format('ZeroTermux-{0}', github.ref_name) || 'ZeroTermux-Nightly') }}
+          name: ${{ format('{0}_release_universal', github.ref_type == 'tag' && format('NovaShell-{0}', github.ref_name) || 'NovaShell-Nightly') }}
           path: dist/*_release_universal.zip
           if-no-files-found: ignore
 
       - name: 上传 Release Arm64 Zip
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ format('{0}_release_arm64-v8a', github.ref_type == 'tag' && format('ZeroTermux-{0}', github.ref_name) || 'ZeroTermux-Nightly') }}
+          name: ${{ format('{0}_release_arm64-v8a', github.ref_type == 'tag' && format('NovaShell-{0}', github.ref_name) || 'NovaShell-Nightly') }}
           path: dist/*_release_arm64-v8a.zip
           if-no-files-found: ignore
 
       - name: 上传 Release Armeabi Zip
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ format('{0}_release_armeabi-v7a', github.ref_type == 'tag' && format('ZeroTermux-{0}', github.ref_name) || 'ZeroTermux-Nightly') }}
+          name: ${{ format('{0}_release_armeabi-v7a', github.ref_type == 'tag' && format('NovaShell-{0}', github.ref_name) || 'NovaShell-Nightly') }}
           path: dist/*_release_armeabi-v7a.zip
           if-no-files-found: ignore
 
       - name: 上传 Release X86 Zip
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ format('{0}_release_x86', github.ref_type == 'tag' && format('ZeroTermux-{0}', github.ref_name) || 'ZeroTermux-Nightly') }}
+          name: ${{ format('{0}_release_x86', github.ref_type == 'tag' && format('NovaShell-{0}', github.ref_name) || 'NovaShell-Nightly') }}
           path: dist/*_release_x86.zip
           if-no-files-found: ignore
 
       - name: 上传 Release X86_64 Zip
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ format('{0}_release_x86_64', github.ref_type == 'tag' && format('ZeroTermux-{0}', github.ref_name) || 'ZeroTermux-Nightly') }}
+          name: ${{ format('{0}_release_x86_64', github.ref_type == 'tag' && format('NovaShell-{0}', github.ref_name) || 'NovaShell-Nightly') }}
           path: dist/*_release_x86_64.zip
           if-no-files-found: ignore
 
