@@ -1,243 +1,110 @@
 <?xml version="1.0" encoding="utf-8"?>
 <zt-menu>
     <!--####################### 说明 ########################
-    文件路径:
-    /data/data/com.termux/files/home/ZtInfo/main_menu_path.xml
+    文件路径: /data/data/com.termux/files/home/ZtInfo/main_menu_path.xml
     此文件是ZT左侧菜单栏的配置文件，可随意修改（注意格式,错误左侧栏可能无法正常显示）
-    如果需要恢复默认请使用：
-    zt menu reset 命令来复原
-    如果修改完成立即刷新请使用
-    zt menu update 命令或重启APP来立即生效
-    ########################### 说明 ########################-->
+    如果需要恢复默认请使用：zt menu reset 命令来复原
+    如果修改完成立即刷新请使用：zt menu update 命令或重启APP来立即生效
+    ########################################################-->
 
 
-    <!--示例:
-    分组名称:
-    <group id="0" name="常用功能">
-        ####################### name ########################
-        1.name: 点击事件的名称
-        示例：name="切换源"
-        ####################### click ########################
-        1.click: 调用ZT内部的 JAVA 类
-        示例: click="java:com.termux.zerocore.config.mainmenu.config.SwitchSourceClickConfig"
-        2.或跳转到网址页
-        click="jumpUrl:www.baidu.com"
-        3.或执行shell语句
-        click="ztShell:cd ~ && pkg update"
-        4.如果需要直接执行,请修改此配置项
-        autoRunShell="true"
-        ####################### icon ########################
-        注意，此属性只有在 click 非java: 开头才有效果
-        1.icon: 图标 application 开头的是调用ZT内部的资源, 或者填写绝对路径
-        示例:(
-        绝对路径: icon="imgPath:/data/data/com.termux/files/home/ZTinfo/1.png")
-        ####################### shell ########################
-    </group>-->
-
-    <!--此处只是示例，根据自己以后编辑，如果正常使用可注释掉此菜单
-    然后使用
-    zt menu update 立即刷新-->
-    <!--#######################可删除#########################-->
-    <group name="示例点击事件(可在配置文件删除此分组)">
-        <item tag="自定义左侧栏"
-            name="编辑菜单"
-            icon="imgPath:/data/data/com.termux/files/home/ZtInfo/edit_menu.png"
-            click="ztEditText:/data/data/com.termux/files/home/ZtInfo/main_menu_path.xml" />
-        <!--dialog 属性只能对于 click 为 ztShell 生效
-        dialogConfirm 为 false 则不提示
-        -->
-        <item tag="执行终端命令"
-            name="执行终端"
-            icon=""
-            dialogConfirm="true"
-            dialogTitle="温馨提示"
-            dialogMessage="要执行此段shell语句吗"
-            autoRunShell="false"
-            click="ztShell:cd ~ &amp;&amp; pkg update" />
-        <item tag="跳转网址"
-            name="跳转网址"
-            icon=""
-            click="jumpUrl:https://www.baidu.com" />
-        <item tag="占位,什么都不做"
-            name="占位菜单"
-            icon=""
-            click="" />
-        <item tag="跳转内部活动"
-            name="跳转设置"
-            icon=""
-            packageName="com.termux"
-            intentData=""
-            click="startActivity:com.termux.zerocore.settings.ZtSettingsActivity" />
-        <!--intentData 属性值，目前只支持 String 字符串
-            key@@value-->
-        <item tag="跳转action"
-            name="跳转Action"
-            icon=""
-            intentData="data@@com.termux"
-            packageName="com.android.settings"
-            click="actionActivity:android.settings.WIRELESS_SETTINGS" />
-        <!--List列表
-        名称@@命令,名称@@命令,名称@@命令
-        && 在XML转换为 &amp;&amp;
-        -->
-        <item tag="List列表"
-            name="List列表"
-            autoRunShell="true"
-            listTitle="请选择一个命令"
-            click="commands:单行命令@@pkg update,多行命令@@pkg update &amp;&amp; pkg install vim,安装git@@pkg install git" />
-
-        <item tag="在线脚本"
-            name="在线脚本"
-            icon=""
-            click="shellUrl:https://od.ixcmstudio.cn/on_line_sh/main.json" />
-
-        <item tag="下载站"
-            name="下载站"
-            icon=""
-            click="downloadUrl:https://od.ixcmstudio.cn/repository/main.json" />
-
-        <item tag="应用内打开URL"
-            name="应用内URL"
-            icon=""
-            activityTitle="百度一下"
-            click="appWebUrl:https://www.baidu.com" />
-
-    </group>
-    <!--#######################可删除#########################-->
-
-    <!--不要尝试修改TAG标签，此标签是备注标签！对于click属性java: 开头的无法修改icon,可自由替换组和排序-->
-    <!--不要尝试修改TAG标签，此标签是备注标签！对于click属性java: 开头的无法修改icon,可自由替换组和排序-->
-    <!--不要尝试修改TAG标签，此标签是备注标签！对于click属性java: 开头的无法修改icon,可自由替换组和排序-->
-    <group name="常用功能">
-        <!--在name标签修改你的新名称-->
-        <item tag="切换源"
-            name="切换源"
-            click="java:com.termux.zerocore.config.mainmenu.config.SwitchSourceClickConfig" />
-        <item tag="容器切换"
-            click="java:com.termux.zerocore.config.mainmenu.config.ContainerSwitchClickConfig" />
-        <item tag="备份/恢复"
-            click="java:com.termux.zerocore.config.mainmenu.config.BackupRestoreClickConfig" />
-        <item tag="MOE全能"
-            click="java:com.termux.zerocore.config.mainmenu.config.MoeClickConfig" />
-        <item tag="发型版本"
-            click="java:com.termux.zerocore.config.mainmenu.config.ReleaseLinuxVersionClickConfig" />
-        <item tag="QEMU"
-            click="java:com.termux.zerocore.config.mainmenu.config.QEMUClickConfig" />
-        <item tag="ZT设置"
-            click="java:com.termux.zerocore.config.mainmenu.config.ZTSettingsClickConfig" />
+    <!--==================== 核心工具 ====================-->
+    <group name="核心工具">
+        <item tag="切换源" name="切换软件源" click="java:com.termux.zerocore.config.mainmenu.config.SwitchSourceClickConfig" />
+        <item tag="容器切换" name="容器管理" click="java:com.termux.zerocore.config.mainmenu.config.ContainerSwitchClickConfig" />
+        <item tag="备份/恢复" name="备份与恢复" click="java:com.termux.zerocore.config.mainmenu.config.BackupRestoreClickConfig" />
+        <item tag="MOE全能" name="MOE全能工具" click="java:com.termux.zerocore.config.mainmenu.config.MoeClickConfig" />
+        <item tag="发型版本" name="发行版本管理" click="java:com.termux.zerocore.config.mainmenu.config.ReleaseLinuxVersionClickConfig" />
+        <item tag="QEMU" name="QEMU虚拟化" click="java:com.termux.zerocore.config.mainmenu.config.QEMUClickConfig" />
     </group>
 
-    <group name="X11功能">
-        <item tag="X11设置"
-            click="java:com.termux.zerocore.config.mainmenu.config.X11SettingsClickConfig" />
-        <item tag="显示终端"
-            click="java:com.termux.zerocore.config.mainmenu.config.ShowCommandClickConfig" />
-        <item tag="隐藏终端"
-            click="java:com.termux.zerocore.config.mainmenu.config.HideCommandClickConfig" />
-        <item tag="X11环境"
-            click="java:com.termux.zerocore.config.mainmenu.config.X11EnvironmentClickConfig" />
-        <item tag="修复环境错误"
-            click="java:com.termux.zerocore.config.mainmenu.config.FixEnvironmentalErrorClickConfig" />
-        <item tag="安装X11"
-            click="java:com.termux.zerocore.config.mainmenu.config.InstallX11ClickConfig" />
-        <item tag="显示键盘"
-            click="java:com.termux.zerocore.config.mainmenu.config.ShowX11KeyboardClickConfig" />
-        <item tag="隐藏键盘"
-            click="java:com.termux.zerocore.config.mainmenu.config.HideX11KeyboardClickConfig" />
-        <item tag="VNC"
-            click="java:com.termux.zerocore.config.mainmenu.config.VNCClickConfig" />
+    <!--==================== 终端配置 ====================-->
+    <group name="终端配置">
+        <item tag="SHELL 运行" name="Shell运行配置" click="java:com.termux.zerocore.config.mainmenu.config.AdbShellRunClickConfig" />
+        <item tag="底部键盘" name="底部键盘设置" click="java:com.termux.zerocore.config.mainmenu.config.ZTCommandKeyClickConfig" />
+        <item tag="默认启动文件" name="默认启动脚本" click="java:com.termux.zerocore.config.mainmenu.config.DefBashClickConfig" />
+        <item tag="编辑启动文件" name="编辑启动脚本" click="java:com.termux.zerocore.config.mainmenu.config.ChangBashClickConfig" />
+        <item tag="修改欢迎语" name="自定义欢迎语" click="java:com.termux.zerocore.config.mainmenu.config.ChangStartMsgClickConfig" />
+        <item tag="命令定义" name="命令别名定义" click="java:com.termux.zerocore.config.mainmenu.config.CommandDefinitionCLickConfig" />
     </group>
 
-    <group name="美化/UI 功能">
-        <item tag="悬浮窗口"
-            click="java:com.termux.zerocore.config.mainmenu.config.FloatWindowsClickConfig" />
-        <item tag="美化设置"
-            click="java:com.termux.zerocore.config.mainmenu.config.BeautificationSettingsClickConfig" />
-        <item tag="字体设置"
-            click="java:com.termux.zerocore.config.mainmenu.config.FontSettingsClickConfig" />
-        <item tag="全屏模式"
-            click="java:com.termux.zerocore.config.mainmenu.config.FullScreenClickConfig" />
-        <item tag="雪花(修改此name会使显示状态失效)"
-            click="java:com.termux.zerocore.config.mainmenu.config.SnowflakeClickConfig" />
-        <item tag="视频背景"
-            click="java:com.termux.zerocore.config.mainmenu.config.WebDataClickConfigImp" />
-        <item tag="粒子动画"
-            click="java:com.termux.zerocore.config.mainmenu.config.ParticleClickConfig" />
-        <item tag="清空美化"
-            click="java:com.termux.zerocore.config.mainmenu.config.ClearStyleClickConfig" />
+    <!--==================== 显示与桌面 ====================-->
+    <group name="显示与桌面">
+        <item tag="X11设置" name="X11服务配置" click="java:com.termux.zerocore.config.mainmenu.config.X11SettingsClickConfig" />
+        <item tag="显示终端" name="显示终端窗口" click="java:com.termux.zerocore.config.mainmenu.config.ShowCommandClickConfig" />
+        <item tag="隐藏终端" name="隐藏终端窗口" click="java:com.termux.zerocore.config.mainmenu.config.HideCommandClickConfig" />
+        <item tag="X11环境" name="X11环境配置" click="java:com.termux.zerocore.config.mainmenu.config.X11EnvironmentClickConfig" />
+        <item tag="安装X11" name="安装X11组件" click="java:com.termux.zerocore.config.mainmenu.config.InstallX11ClickConfig" />
+        <item tag="VNC" name="VNC远程桌面" click="java:com.termux.zerocore.config.mainmenu.config.VNCClickConfig" />
     </group>
 
-    <group name="需要插件/引擎(安装完成请重启APP)">
-        <item tag="内置键盘"
-            click="java:com.termux.zerocore.config.mainmenu.config.KeyDataClickConfig" />
-        <item tag="网络linux目录"
-            click="java:com.termux.zerocore.config.mainmenu.config.FileBrowserClickConfig" />
-        <item tag="x86 Alpine"
-            click="java:com.termux.zerocore.config.mainmenu.config.X86AlpineDataClickConfig" />
+    <!--==================== 界面美化 ====================-->
+    <group name="界面美化">
+        <item tag="美化设置" name="主题美化设置" click="java:com.termux.zerocore.config.mainmenu.config.BeautificationSettingsClickConfig" />
+        <item tag="字体设置" name="终端字体设置" click="java:com.termux.zerocore.config.mainmenu.config.FontSettingsClickConfig" />
+        <item tag="全屏模式" name="全屏显示模式" click="java:com.termux.zerocore.config.mainmenu.config.FullScreenClickConfig" />
+        <item tag="雪花(修改此name会使显示状态失效)" name="雪花动画效果" click="java:com.termux.zerocore.config.mainmenu.config.SnowflakeClickConfig" />
+        <item tag="视频背景" name="动态视频背景" click="java:com.termux.zerocore.config.mainmenu.config.WebDataClickConfigImp" />
+        <item tag="粒子动画" name="粒子动画效果" click="java:com.termux.zerocore.config.mainmenu.config.ParticleClickConfig" />
     </group>
 
-    <group name="ROOT功能">
-        <item tag="网络adb"
-            click="java:com.termux.zerocore.config.mainmenu.config.OpenTurnNetworkAdbClickConfig" />
-        <item tag="关闭ADB"
-            click="java:com.termux.zerocore.config.mainmenu.config.CloseTurnNetworkAdbClickConfig" />
-        <item tag="Docker检查"
-            click="java:com.termux.zerocore.config.mainmenu.config.DockerCheckClickConfig" />
+    <!--==================== 扩展功能 ====================-->
+    <group name="扩展功能">
+        <item tag="内置键盘" name="内置扩展键盘" click="java:com.termux.zerocore.config.mainmenu.config.KeyDataClickConfig" />
+        <item tag="网络linux目录" name="网络文件浏览" click="java:com.termux.zerocore.config.mainmenu.config.FileBrowserClickConfig" />
+        <item tag="x86 Alpine" name="x86 Alpine环境" click="java:com.termux.zerocore.config.mainmenu.config.X86AlpineDataClickConfig" />
+        <item tag="悬浮窗口" name="悬浮窗模式" click="java:com.termux.zerocore.config.mainmenu.config.FloatWindowsClickConfig" />
+        <item tag="清空美化" name="重置美化效果" click="java:com.termux.zerocore.config.mainmenu.config.ClearStyleClickConfig" />
+        <item tag="修复环境错误" name="修复环境异常" click="java:com.termux.zerocore.config.mainmenu.config.FixEnvironmentalErrorClickConfig" />
     </group>
 
-    <group name="线上功能">
-        <item tag="在线脚本"
-            click="java:com.termux.zerocore.config.mainmenu.config.OnLineCommandClickConfig" />
-        <item tag="下载站"
-            click="java:com.termux.zerocore.config.mainmenu.config.DownLoadClickConfig" />
-        <item tag="公共仓库"
-            click="java:com.termux.zerocore.config.mainmenu.config.PublicWarehouseClickConfig" />
+    <!--==================== 网络服务 ====================-->
+    <group name="网络服务">
+        <item tag="FTP 服务" name="FTP文件服务" click="java:com.termux.zerocore.config.mainmenu.config.FtpDataClickConfig" />
+        <item tag="ADB 远程链接" name="ADB远程连接" click="java:com.termux.zerocore.config.mainmenu.config.RemoteConnectionClickConfig" />
+        <item tag="浏览器终端" name="内置浏览器终端" click="java:com.termux.zerocore.config.mainmenu.config.WebDataClickConfig" />
+        <item tag="网络adb" name="开启网络ADB" click="java:com.termux.zerocore.config.mainmenu.config.OpenTurnNetworkAdbClickConfig" />
+        <item tag="关闭ADB" name="关闭网络ADB" click="java:com.termux.zerocore.config.mainmenu.config.CloseTurnNetworkAdbClickConfig" />
+        <item tag="短信/通话" name="短信通话管理" click="java:com.termux.zerocore.config.mainmenu.config.PhoneSmsClickConfig" />
     </group>
 
-    <group name="配置终端">
-        <item tag="SHELL 运行"
-            click="java:com.termux.zerocore.config.mainmenu.config.AdbShellRunClickConfig" />
-        <item tag="底部键盘"
-            click="java:com.termux.zerocore.config.mainmenu.config.ZTCommandKeyClickConfig" />
-        <item tag="默认启动文件"
-            click="java:com.termux.zerocore.config.mainmenu.config.DefBashClickConfig" />
-        <item tag="编辑启动文件"
-            click="java:com.termux.zerocore.config.mainmenu.config.ChangBashClickConfig" />
-        <item tag="修改欢迎语"
-            click="java:com.termux.zerocore.config.mainmenu.config.ChangStartMsgClickConfig" />
-        <item tag="命令定义"
-            click="java:com.termux.zerocore.config.mainmenu.config.CommandDefinitionCLickConfig" />
-        <item tag="开机启动(修改此name会使显示状态失效)"
-            click="java:com.termux.zerocore.config.mainmenu.config.BootCommandClickConfig" />
+    <!--==================== 在线资源 ====================-->
+    <group name="在线资源">
+        <item tag="在线脚本" name="在线脚本仓库" click="java:com.termux.zerocore.config.mainmenu.config.OnLineCommandClickConfig" />
+        <item tag="下载站" name="资源下载站" click="java:com.termux.zerocore.config.mainmenu.config.DownLoadClickConfig" />
+        <item tag="公共仓库" name="公共软件仓库" click="java:com.termux.zerocore.config.mainmenu.config.PublicWarehouseClickConfig" />
+        <item tag="开源地址" name="开源项目地址" click="java:com.termux.zerocore.config.mainmenu.config.GitHubClickConfig" />
+        <item tag="语言切换" name="界面语言切换" click="java:com.termux.zerocore.config.mainmenu.config.LanguageClickConfig" />
     </group>
 
-    <group name="ZT 功能">
-        <item tag="安装模块"
-            click="java:com.termux.zerocore.config.mainmenu.config.InstallModuleClickConfig" />
-        <item tag="FTP 服务"
-            click="java:com.termux.zerocore.config.mainmenu.config.FtpDataClickConfig" />
-        <item tag="常用快捷方式"
-            click="java:com.termux.zerocore.config.mainmenu.config.CommonlyUsedSoftLinksDataClickConfig" />
-        <item tag="自定义快捷方式"
-            click="java:com.termux.zerocore.config.mainmenu.config.MyUsedSoftLinksDataClickConfig" />
-        <item tag="卸载"
-            click="java:com.termux.zerocore.config.mainmenu.config.UnInstallClickConfig" />
-        <item tag="ADB 远程链接"
-            click="java:com.termux.zerocore.config.mainmenu.config.RemoteConnectionClickConfig" />
-        <item tag="浏览器终端"
-            click="java:com.termux.zerocore.config.mainmenu.config.WebDataClickConfig" />
-        <item tag="短信/通话"
-            click="java:com.termux.zerocore.config.mainmenu.config.PhoneSmsClickConfig" />
-        <item tag="定时任务"
-            click="java:com.termux.zerocore.config.mainmenu.config.ScheduledTaskClickConfig" />
-        <item tag="打开目录"
-            click="java:com.termux.zerocore.config.mainmenu.config.OpenPathClickConfig" />
-        <item tag="创建数据包信息"
-            click="java:com.termux.zerocore.config.mainmenu.config.DataMessageClickConfig" />
-        <item tag="语言切换"
-            click="java:com.termux.zerocore.config.mainmenu.config.LanguageClickConfig" />
-        <item tag="开源地址"
-            click="java:com.termux.zerocore.config.mainmenu.config.GitHubClickConfig" />
+    <!--==================== 系统管理 ====================-->
+    <group name="系统管理">
+        <item tag="ZT设置" name="ZT全局设置" click="java:com.termux.zerocore.config.mainmenu.config.ZTSettingsClickConfig" />
+        <item tag="安装模块" name="模块安装管理" click="java:com.termux.zerocore.config.mainmenu.config.InstallModuleClickConfig" />
+        <item tag="Docker检查" name="Docker环境检查" click="java:com.termux.zerocore.config.mainmenu.config.DockerCheckClickConfig" />
+        <item tag="定时任务" name="定时任务管理" click="java:com.termux.zerocore.config.mainmenu.config.ScheduledTaskClickConfig" />
+        <item tag="打开目录" name="文件目录浏览" click="java:com.termux.zerocore.config.mainmenu.config.OpenPathClickConfig" />
+        <item tag="创建数据包信息" name="数据包信息管理" click="java:com.termux.zerocore.config.mainmenu.config.DataMessageClickConfig" />
+    </group>
+
+    <!--==================== 快捷操作 ====================-->
+    <group name="快捷操作">
+        <item tag="常用快捷方式" name="常用快捷入口" click="java:com.termux.zerocore.config.mainmenu.config.CommonlyUsedSoftLinksDataClickConfig" />
+        <item tag="自定义快捷方式" name="自定义快捷入口" click="java:com.termux.zerocore.config.mainmenu.config.MyUsedSoftLinksDataClickConfig" />
+        <item tag="显示键盘" name="显示X11键盘" click="java:com.termux.zerocore.config.mainmenu.config.ShowX11KeyboardClickConfig" />
+        <item tag="隐藏键盘" name="隐藏X11键盘" click="java:com.termux.zerocore.config.mainmenu.config.HideX11KeyboardClickConfig" />
+        <item tag="开机启动(修改此name会使显示状态失效)" name="开机启动配置" click="java:com.termux.zerocore.config.mainmenu.config.BootCommandClickConfig" />
+        <item tag="卸载" name="卸载NovaShell" click="java:com.termux.zerocore.config.mainmenu.config.UnInstallClickConfig" />
+    </group>
+
+    <!--==================== 自定义功能 ====================-->
+    <group name="自定义功能">
+        <item tag="编辑菜单" name="编辑左侧菜单" icon="imgPath:/data/data/com.termux/files/home/ZtInfo/edit_menu.png" click="ztEditText:/data/data/com.termux/files/home/ZtInfo/main_menu_path.xml" />
+        <item tag="执行终端命令" name="更新软件包" dialogConfirm="true" dialogTitle="确认执行" dialogMessage="确定要执行软件包更新吗？" autoRunShell="false" click="ztShell:cd ~ &amp;&amp; pkg update &amp;&amp; pkg upgrade" />
+        <item tag="跳转网址" name="访问百度" click="jumpUrl:https://www.baidu.com" />
+        <item tag="List列表" name="常用命令列表" autoRunShell="true" listTitle="选择一个命令执行" click="commands:更新软件@@pkg update,升级软件@@pkg upgrade,安装vim@@pkg install vim,安装git@@pkg install git,清理缓存@@pkg autoclean" />
+        <item tag="在线脚本" name="在线脚本市场" icon="" click="shellUrl:https://od.ixcmstudio.cn/on_line_sh/main.json" />
+        <item tag="下载站" name="资源下载中心" icon="" click="downloadUrl:https://od.ixcmstudio.cn/repository/main.json" />
     </group>
 
 </zt-menu>
