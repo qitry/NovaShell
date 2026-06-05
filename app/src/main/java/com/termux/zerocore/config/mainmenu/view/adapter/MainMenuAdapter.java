@@ -43,7 +43,7 @@ public class MainMenuAdapter extends RecyclerView.Adapter<MainMenuViewHolder> {
     public void onBindViewHolder(@NonNull MainMenuViewHolder holder, int position) {
         int id = mMainMenuCategoryData.get(position).mId;
         holder.mTitle.setText(mMainMenuCategoryData.get(position).mTitle);
-        holder.mItemMenuRec.setLayoutManager(new GridLayoutManager(mContext, 3));
+        holder.mItemMenuRec.setLayoutManager(new GridLayoutManager(mContext, 2));
         MainMenuItemAdapter mainMenuItemAdapter = new MainMenuItemAdapter(mContext, mMainMenuCategoryData.get(position).mClickArrayList);
         mainMenuItemAdapters.put(position, mainMenuItemAdapter);
         holder.mItemMenuRec.setAdapter(mainMenuItemAdapter);
