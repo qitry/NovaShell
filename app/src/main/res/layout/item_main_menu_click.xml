@@ -14,7 +14,7 @@
         android:paddingRight="8dp"
         android:paddingTop="6dp"
         android:paddingBottom="6dp"
-        android:background="?attr/selectableItemBackground">
+        android:background="?android:attr/selectableItemBackground">
 
         <TextView
             android:id="@+id/code_title"
