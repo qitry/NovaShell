@@ -1,8 +1,10 @@
 package com.termux.zerocore.config.mainmenu.view.adapter;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -33,6 +35,7 @@ public class MainMenuItemAdapter extends RecyclerView.Adapter<MainMenuItemViewHo
 
     @Override
     public void onBindViewHolder(@NonNull MainMenuItemViewHolder holder, int position) {
+        if (mMainMenuClickConfigs == null || position >= mMainMenuClickConfigs.size()) return;
         MainMenuClickConfig mainMenuClickConfig = mMainMenuClickConfigs.get(position);
         String xmlString = mainMenuClickConfig.getXmlString(mContext);
         if (!TextUtils.isEmpty(xmlString)) {
@@ -51,12 +54,20 @@ public class MainMenuItemAdapter extends RecyclerView.Adapter<MainMenuItemViewHo
             return mainMenuClickConfig.onLongClick(view, mContext);
         });
         mainMenuClickConfig.setTextView(holder.mCodeTitle);
+        mainMenuClickConfig.setImageView(holder.mCodeIcon);
+        Drawable icon = mainMenuClickConfig.getIcon(mContext);
+        if (icon != null) {
+            holder.mCodeIcon.setVisibility(View.VISIBLE);
+            holder.mCodeIcon.setImageDrawable(icon);
+        } else {
+            holder.mCodeIcon.setVisibility(View.GONE);
+        }
         mainMenuClickConfig.initViewStatus(mContext);
     }
 
     @Override
     public int getItemCount() {
-        return mMainMenuClickConfigs.size();
+        return mMainMenuClickConfigs == null ? 0 : mMainMenuClickConfigs.size();
     }
 
     public void release() {

@@ -102,7 +102,6 @@ public class MainMenuConfig implements BaseConfig {
         // 美化/UI 功能
         ArrayList<MainMenuClickConfig> beautificationClicks = new ArrayList<>();
         beautificationClicks.add(new FloatWindowsClickConfig());
-        beautificationClicks.add(new BeautificationSettingsClickConfig());
         beautificationClicks.add(new FontSettingsClickConfig());
         beautificationClicks.add(new FullScreenClickConfig());
         beautificationClicks.add(new SnowflakeClickConfig());

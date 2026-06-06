@@ -5,7 +5,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.termux.R;
@@ -34,7 +34,7 @@ public class CategoryItemsDialog extends BaseDialogCentre {
         titleView.setText(mCategoryTitle);
         closeView.setOnClickListener(v -> dismiss());
 
-        recyclerView.setLayoutManager(new LinearLayoutManager(mContext));
+        recyclerView.setLayoutManager(new GridLayoutManager(mContext, 2));
         MainMenuItemAdapter adapter = new MainMenuItemAdapter(mContext, mItems);
         recyclerView.setAdapter(adapter);
     }

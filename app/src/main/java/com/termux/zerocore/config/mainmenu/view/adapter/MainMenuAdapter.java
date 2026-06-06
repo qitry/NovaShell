@@ -2,7 +2,6 @@ package com.termux.zerocore.config.mainmenu.view.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -11,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.termux.R;
 import com.termux.zerocore.config.mainmenu.data.MainMenuCategoryData;
 import com.termux.zerocore.config.mainmenu.view.viewholder.MainMenuViewHolder;
-import com.termux.zerocore.dialog.CategoryItemsDialog;
+import com.termux.zerocore.dialog.MenuModalDialog;
 
 import java.util.ArrayList;
 
@@ -35,7 +34,7 @@ public class MainMenuAdapter extends RecyclerView.Adapter<MainMenuViewHolder> {
         MainMenuCategoryData category = mMainMenuCategoryData.get(position);
         holder.mTitle.setText(category.mTitle);
         holder.itemView.setOnClickListener(v -> {
-            CategoryItemsDialog dialog = new CategoryItemsDialog(mContext, category.mTitle, category.mClickArrayList);
+            MenuModalDialog dialog = new MenuModalDialog(mContext, category.mTitle, category.mClickArrayList);
             dialog.show();
         });
     }
