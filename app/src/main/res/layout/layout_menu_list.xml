@@ -23,17 +23,20 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_margin="8dp"
-                android:layout_marginTop="5dp"
-                android:layout_height="wrap_content">
+                android:layout_margin="10dp"
+                android:layout_marginTop="8dp"
+                android:layout_height="wrap_content"
+                android:minHeight="40dp"
+                android:gravity="center_vertical">
 
                 <TextView
                     android:id="@+id/title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
                     android:text="title"
-                    android:textColor="@color/color_ffffff"
-                    android:textSize="13sp"
+                    android:textColor="@color/color_48baf3"
+                    android:textSize="14sp"
                     android:textStyle="bold" />
 
                 <ImageView
@@ -41,6 +44,7 @@
                     android:layout_width="15dp"
                     android:layout_height="15dp"
                     android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
                     android:rotation="180"
                     android:src="@mipmap/up_down" />
 
@@ -49,15 +53,17 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:background="@color/color0A868686" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/item_menu_rec"
                 android:layout_width="match_parent"
                 android:nestedScrollingEnabled="false"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:paddingTop="4dp"
+                android:paddingBottom="4dp" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 </LinearLayout>

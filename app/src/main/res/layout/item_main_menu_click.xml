@@ -7,42 +7,25 @@
     <LinearLayout
         android:id="@+id/item_layout"
         android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:paddingLeft="12dp"
-        android:paddingRight="12dp">
-
-        <RelativeLayout
-            android:layout_width="30dp"
-            android:layout_height="30dp">
-
-            <ImageView
-                android:id="@+id/code_image"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_centerInParent="true"
-                android:src="@mipmap/settings" />
-
-            <ImageView
-                android:id="@+id/disable_ico"
-                android:layout_width="12dp"
-                android:layout_height="12dp"
-                android:layout_alignEnd="@+id/code_image"
-                android:src="@mipmap/zt_shell_disable"
-                android:visibility="invisible" />
-        </RelativeLayout>
+        android:layout_height="48dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:paddingTop="6dp"
+        android:paddingBottom="6dp"
+        android:background="?attr/selectableItemBackground">
 
         <TextView
             android:id="@+id/code_title"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
-            android:layout_weight="1"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:gravity="center"
             android:text="@string/x11_features_settings"
             android:textColor="@color/color_ffffff"
-            android:textSize="12sp"
-            android:textStyle="bold" />
+            android:textSize="12sp" />
 
     </LinearLayout>
 

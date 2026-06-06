@@ -118,6 +118,8 @@ import com.termux.zerocore.code.CodeString;
 import com.termux.zerocore.config.ZTConstantConfig;
 import com.termux.zerocore.config.mainmenu.MainMenuConfig;
 import com.termux.zerocore.config.mainmenu.XMLMainMenuConfig;
+import com.termux.zerocore.config.mainmenu.config.ContainerSwitchClickConfig;
+import com.termux.zerocore.config.mainmenu.config.SwitchSourceClickConfig;
 import com.termux.zerocore.config.mainmenu.data.MainMenuCategoryData;
 import com.termux.zerocore.config.mainmenu.view.adapter.MainMenuAdapter;
 import com.termux.zerocore.config.other.ZTGitHubVersion;
@@ -1225,6 +1227,9 @@ public final class TermuxActivity extends AppCompatActivity implements ServiceCo
     private CardView ip_card;
     private ImageView open_image;
     private CardView info_card;
+    private CardView quick_actions_card;
+    private TextView switch_source_btn;
+    private TextView container_switch_btn;
     private TextView version;
     private TextView error_msg;
     private TextView eg_tv;
@@ -1282,6 +1287,9 @@ public final class TermuxActivity extends AppCompatActivity implements ServiceCo
         open_image_data = findViewById(R.id.open_image_data);
         error_msg = findViewById(R.id.error_msg);
         data_info_card = findViewById(R.id.data_info_card);
+        quick_actions_card = findViewById(R.id.quick_actions_card);
+        switch_source_btn = findViewById(R.id.switch_source_btn);
+        container_switch_btn = findViewById(R.id.container_switch_btn);
         data_info_content = findViewById(R.id.data_info_content);
         mKeyBordButton = findViewById(R.id.key_bord_button);
         mGuideLayout = findViewById(R.id.guide_layout);
@@ -1315,6 +1323,18 @@ public final class TermuxActivity extends AppCompatActivity implements ServiceCo
             v -> startActivity(new Intent(TermuxActivity.this, ZtSettingsActivity.class)));
         /*findViewById(R.id.settings).setOnClickListener(
             v -> startActivity(new Intent(TermuxActivity.this, ZtSettingsActivity.class)));*/
+
+        switch_source_btn.setOnClickListener(v -> {
+            SwitchSourceClickConfig config = new SwitchSourceClickConfig();
+            config.initContext(TermuxActivity.this);
+            config.onClick(v, TermuxActivity.this);
+        });
+
+        container_switch_btn.setOnClickListener(v -> {
+            ContainerSwitchClickConfig config = new ContainerSwitchClickConfig();
+            config.initContext(TermuxActivity.this);
+            config.onClick(v, TermuxActivity.this);
+        });
 
         ip_card.setOnClickListener(v -> {
             if (info_card.getVisibility() == View.GONE) {

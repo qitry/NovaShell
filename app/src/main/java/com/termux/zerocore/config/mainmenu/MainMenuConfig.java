@@ -79,9 +79,6 @@ public class MainMenuConfig implements BaseConfig {
     public static void init(Context context) {
         // 常用功能
         ArrayList<MainMenuClickConfig> commonClicks = new ArrayList<>();
-        // 切换源
-        commonClicks.add(new SwitchSourceClickConfig());
-        commonClicks.add(new ContainerSwitchClickConfig());
         commonClicks.add(new BackupRestoreClickConfig());
         commonClicks.add(new MoeClickConfig());
         commonClicks.add(new ReleaseLinuxVersionClickConfig());

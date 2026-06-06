@@ -3,7 +3,6 @@ package com.termux.zerocore.config.mainmenu.view.adapter;
 import android.content.Context;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -35,7 +34,6 @@ public class MainMenuItemAdapter extends RecyclerView.Adapter<MainMenuItemViewHo
     @Override
     public void onBindViewHolder(@NonNull MainMenuItemViewHolder holder, int position) {
         MainMenuClickConfig mainMenuClickConfig = mMainMenuClickConfigs.get(position);
-        holder.mCodeImage.setImageDrawable(mainMenuClickConfig.getIcon(mContext));
         String xmlString = mainMenuClickConfig.getXmlString(mContext);
         if (!TextUtils.isEmpty(xmlString)) {
             holder.mCodeTitle.setText(xmlString);
@@ -43,7 +41,6 @@ public class MainMenuItemAdapter extends RecyclerView.Adapter<MainMenuItemViewHo
             holder.mCodeTitle.setText(mainMenuClickConfig.getString(mContext));
         }
 
-        holder.mDisableIco.setVisibility(mainMenuClickConfig.isShowDisableIco() ? View.VISIBLE : View.INVISIBLE);
         holder.mItemlayout.setOnClickListener(view -> {
                 LogUtils.e(TAG, "onBindViewHolder click ");
                 mainMenuClickConfig.initContext(mContext);
@@ -53,7 +50,6 @@ public class MainMenuItemAdapter extends RecyclerView.Adapter<MainMenuItemViewHo
         holder.mItemlayout.setOnLongClickListener(view -> {
             return mainMenuClickConfig.onLongClick(view, mContext);
         });
-        mainMenuClickConfig.setImageView(holder.mCodeImage);
         mainMenuClickConfig.setTextView(holder.mCodeTitle);
         mainMenuClickConfig.initViewStatus(mContext);
     }
